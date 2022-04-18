@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đổi mật khẩu</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <link rel="icon" href="/assets/img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/libs/fontawesome-free-5.15.4-web/css/all.min.css">
+    <link rel="stylesheet" href="/assets/main.css">
+    <link rel="stylesheet" href="/assets/responsive.css">
+    <link rel="stylesheet" href="/dangNhap/dangNhap.css">
+</head>
+
+<body>
+    <div class="center" style="margin: 65px auto;">
+        <div class="header">Đổi mật khẩu</div>
+        <form>
+            <input type="text" placeholder="Tên đăng nhập">
+            <input id="pswrd1" type="password" placeholder="Mật khẩu cũ">
+            <input id="pswrd2" type="password" placeholder="Mật khẩu mới">
+            <input id="pswrd3" type="password" placeholder="Nhập lại mật khẩu">
+            <i class="fas fa-lock" onclick="show()"></i>
+            <input type="submit" value="Lưu thay đổi">
+            <a href="/dangNhap/dangNhap.html">Đăng nhập?</a>
+        </form>
+    </div>
+</body>
+<script src="/doiMatKhau/doiMatKhau.js"></script>
+
+</html>
