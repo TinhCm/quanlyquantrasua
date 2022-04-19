@@ -486,11 +486,11 @@ header {
 }
 
 .footer3 {
-    text-align: center;
     background-color: #00923f;
     padding: 5px 0;
     box-sizing: border-box;
     color: white;
+    display: flex;
 }
 
 .footer3 p {
@@ -504,10 +504,45 @@ header {
     font-size: 12px;
 }
 
+.footer3_left {
+    flex: 1;
+    text-align: center;
+    align-items: center;
+    margin: auto;
+}
+
+.footer3_left a {
+    text-decoration: none;
+    color: white;
+}
+
 .footer3_center {
     margin: auto;
     text-align: center;
     align-items: center;
+    flex: 1;
+}
+
+.footer3_right {
+    flex: 1;
+    text-align: center;
+    cursor: pointer;
+    font-size: 16px;
+    margin: auto;
+}
+
+.footer3_right p {
+    cursor: text;
+}
+
+.footer3_right a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+}
+
+.footer3_right i {
+    padding-right: 10px;
 }
 
 
@@ -811,4 +846,8 @@ h2 {
     float: left;
     object-fit: cover;
     text-align: center;
+}
+
+.logout {
+    display: none;
 }
