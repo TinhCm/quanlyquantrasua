@@ -157,6 +157,10 @@ header {
     position: relative;
 }
 
+.header_thuongHieu a {
+    text-decoration: none;
+}
+
 .tinTuc :hover .temp1 {
     display: block;
     animation: gift1 ease-in 0.1s;

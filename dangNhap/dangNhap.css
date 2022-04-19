@@ -21,6 +21,7 @@ body {
     background: #5c1769;
     border-bottom: 1px solid #370e3f;
     border-radius: 5px 5px 0 0;
+    cursor: text;
 }
 
 .center form {
