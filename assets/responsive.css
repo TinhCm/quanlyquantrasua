@@ -61,6 +61,10 @@ html {
     display: none !important;
 }
 
+.display_none {
+    display: block !important;
+}
+
 .background {
     background-color: white;
 }

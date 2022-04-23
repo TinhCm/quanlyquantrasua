@@ -83,3 +83,11 @@ form a {
     color: #7f2092;
     padding: 0 0 0 20px;
 }
+
+.login_name_false,
+.login_pass_false,
+.login_sent_false {
+    color: red;
+    font-weight: 400;
+    font-size: 14px;
+}

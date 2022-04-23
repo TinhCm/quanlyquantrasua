@@ -41,6 +41,10 @@ header {
     font-size: 12px;
 }
 
+.thongtin_content {
+    display: none;
+}
+
 .hoTro a,
 .cauHoi a {
     font-weight: 600 !important;
@@ -854,4 +858,34 @@ h2 {
 
 .logout {
     display: none;
+}
+
+
+/* Thông tin */
+
+.thongTin {
+    min-height: 500px;
+}
+
+.content_left_box {
+    height: 30px;
+    width: 15px;
+    background-color: #02b24e;
+    text-align: center;
+    align-items: center;
+}
+
+.thongTin_header {
+    display: flex;
+    margin-top: 20px;
+}
+
+.thongTin_header h1 {
+    line-height: 10px;
+    padding-left: 20px;
+}
+
+.thongTin ul li {
+    font-size: 18px;
+    line-height: 30px;
 }

@@ -17,13 +17,16 @@
 <body>
     <div class="center">
         <div class="header">Đăng nhập</div>
-        <form>
-            <input type="text" placeholder="Tên đăng nhập">
+        <form onsubmit="return false" action="" autocomplete="on">
+            <input class="login_name" type="text" placeholder="Tên đăng nhập">
             <i style="cursor: text;" class="fas fa-user-alt"></i>
-            <input id="pswrd" type="password" placeholder="Mật khẩu">
+            <h4 class="login_name_false"></h4>
+            <input class="login_pass" id="pswrd" type="password" placeholder="Mật khẩu">
             <i class="fas fa-lock" onclick="show()"></i>
-            <input type="submit" value="Đăng nhập">
+            <h4 class="login_pass_false"></h4>
+            <input class="login_sent" type="submit" value="Đăng nhập">
             <a href="/doiMatKhau/doiMatKhau.html">Thay đổi mật khẩu?</a>
+            <h4 class="login_sent_false"></h4>
         </form>
     </div>
 </body>
