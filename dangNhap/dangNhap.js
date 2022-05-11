@@ -11,20 +11,6 @@ function show() {
     }
 }
 
-var user = [{
-        "ten": "tinh",
-        "ma": "vbsasasas",
-        "password": 12345,
-        "phanQuyen": false
-    },
-    {
-        "ten": "admin",
-        "ma": "asasasass",
-        "password": 12,
-        "phanQuyen": true
-    }
-]
-
 // Login
 
 var login_name = document.querySelector('.login_name');
@@ -37,30 +23,44 @@ var login_sent_false = document.querySelector('.login_sent_false');
 
 login_sent.onclick = function() {
     function login() {
-        var check_name = user.find(function(users) {
-            return users.ten === login_name.value;
-        })
 
-        if (typeof check_name != 'undefined') {
-            if (check_name.password == login_pass.value) {
-                login_sent_false.innerHTML = "Đăng nhập thành công"
-                setTimeout(() => {
-                    location.href = "/index.html"
-                }, 1000);
+        var url_user = 'http://localhost:3000/getNV';
+        fetch(url_user, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                var check_name = data.find(function(users) {
+                    return users.MANV === login_name.value;
+                })
 
-                function setCookie(cname, cvalue, exdays) {
-                    const d = new Date();
-                    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-                    let expires = "expires=" + d.toUTCString();
-                    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+                if (typeof check_name != 'undefined') {
+                    if (check_name.MATKHAU == login_pass.value) {
+                        login_sent_false.innerHTML = "Đăng nhập thành công"
+                        setTimeout(() => {
+                            location.href = "/index.html"
+                        }, 1000);
+
+                        function setCookie(cname, cvalue, exdays) {
+                            const d = new Date();
+                            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+                            let expires = "expires=" + d.toUTCString();
+                            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+                        }
+                        setCookie("ten", check_name.TENNV, 365);
+                        setCookie("ma", check_name.MANV, 365);
+                    } else {
+                        login_sent_false.innerHTML = "Tên đăng nhập hoặc mật khẩu sai"
+                    }
+                } else {
+                    login_sent_false.innerHTML = "Tài khoản không tồn tại"
                 }
-                setCookie("ten", check_name.ma, 365);
-            } else {
-                login_sent_false.innerHTML = "Tên đăng nhập hoặc mật khẩu sai"
-            }
-        } else {
-            login_sent_false.innerHTML = "Tài khoản không tồn tại"
-        }
+            })
+            .catch((error) => {});
+
     }
     login();
 }

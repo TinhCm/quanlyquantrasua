@@ -41,10 +41,6 @@ header {
     font-size: 12px;
 }
 
-.thongtin_content {
-    display: none;
-}
-
 .hoTro a,
 .cauHoi a {
     font-weight: 600 !important;
@@ -863,8 +859,10 @@ h2 {
 
 /* Thông tin */
 
-.thongTin {
-    min-height: 500px;
+.thongTin,
+.ca,
+.luong {
+    min-height: 518px;
 }
 
 .content_left_box {
@@ -875,17 +873,259 @@ h2 {
     align-items: center;
 }
 
-.thongTin_header {
+.thongTin_header1 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.thongTin_right {
+    margin-top: 20px;
+    display: none;
+}
+
+.thongTin_right a {
+    text-decoration: none;
+    color: black;
+}
+
+.thongTin_right h1 {
+    line-height: 10px;
+}
+
+.thongTin_right h1 i {
+    padding-right: 10px;
+    color: blue;
+}
+
+.thongTin_header,
+.ca_header,
+.luong_header,
+.themNhanVien_header,
+.suaNhanVien_header {
     display: flex;
     margin-top: 20px;
 }
 
-.thongTin_header h1 {
+.thongTin_header h1,
+.ca h1,
+.luong h1,
+.themNhanVien_header h1,
+.suaNhanVien_header h1 {
     line-height: 10px;
     padding-left: 20px;
 }
 
-.thongTin ul li {
+.thongtin_content h3,
+.ca_content h3,
+.luong h3 {
+    font-size: 20px;
+    color: blue;
+}
+
+.thongtin_content h4 {
     font-size: 18px;
-    line-height: 30px;
+    padding-left: 35px;
+    font-weight: 400;
+    color: var(--text-color);
+    margin-top: 0px;
+}
+
+.thongtin_content h3 i,
+.ca_content h3 i,
+.luong_content h3 i {
+    color: blue;
+    padding-right: 10px;
+}
+
+.thongTin ul,
+.ca ul,
+.luong ul {
+    list-style: none;
+}
+
+.thongTin ul li {
+    padding-bottom: 10px;
+    border-bottom: 2px solid orangered;
+}
+
+.thongTin ul li:last-child,
+.ca ul li:last-child {
+    border-bottom: none;
+    padding-top: 10px;
+}
+
+.thongTin ul li p,
+.ca ul li p,
+.luong ul li p {
+    font-size: 18px;
+    line-height: 20px;
+    color: var(--text-color);
+}
+
+.thongtin_content_header {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.thongtin_content_header a {
+    text-decoration: none;
+    color: black;
+}
+
+.thongtin_content_header h2 {
+    font-size: 20px;
+    margin: 20px 0;
+}
+
+.thongtin_content_header h2 i {
+    color: blue;
+}
+
+.thongtin_content_left {
+    flex: 1;
+}
+
+.thongtin_content_right {
+    flex: 1;
+}
+
+.thongtin_content_right button {
+    font-size: 18px;
+    color: red;
+    border: solid 1px red;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+/* Ca làm việc */
+
+.ca ul li p {
+    font-size: 18px;
+    line-height: 20px;
+    color: var(--text-color);
+}
+
+.ca ul li {
+    padding-bottom: 10px;
+}
+
+
+/* Lương */
+
+.luong ul li {
+    padding-bottom: 10px;
+}
+
+
+/* Thêm nhân viên */
+
+.themNhanVien,
+.suaNhanVien {
+    min-height: 498px;
+}
+
+.themNhanVien_center,
+.suaNhanVien_center {
+    display: flex;
+    justify-content: space-between;
+}
+
+.themNhanVien_center,
+.suaNhanVien_center {
+    margin-top: 20px;
+}
+
+.themNhanVien_center h4,
+.suaNhanVien_center h4 {
+    color: red;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.themNhanVien_center input {
+    font-size: 18px;
+    display: block;
+    outline: none;
+    margin-bottom: 10px;
+    height: 40px;
+    width: 400px;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 0 10px;
+}
+
+.themNhanVien_center select {
+    font-size: 18px;
+    display: block;
+    outline: none;
+    margin-bottom: 10px;
+    height: 40px;
+    width: 400px;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 0 10px;
+}
+
+.themNhanVien_left,
+.suaNhanVien_left {
+    flex: 1;
+}
+
+.themNhanVien_right,
+.suaNhanVien_right {
+    flex: 1;
+}
+
+.themNV {
+    height: 40px;
+    font-size: 18px;
+    color: white;
+    background-color: blue;
+    border: none;
+    border-radius: 5px;
+    width: 400px;
+    cursor: pointer;
+}
+
+
+/* Sửa nhân viên */
+
+.suaNhanVien_content {
+    display: flex;
+}
+
+.suaNhanVien_content label {
+    font-size: 18px;
+    min-width: 150px;
+    line-height: 40px;
+}
+
+.suaNhanVien_content input {
+    font-size: 18px;
+    min-width: 250px;
+    height: 40px;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 0 10px;
+}
+
+.suaNV {
+    height: 40px;
+    font-size: 18px;
+    color: white;
+    background-color: blue;
+    border: none;
+    border-radius: 5px;
+    width: 400px;
+    cursor: pointer;
+}
+
+.suaNhanVien_content h3 {
+    font-size: 18px;
+    height: 40px;
+    line-height: 40px;
+    margin: 0;
 }
