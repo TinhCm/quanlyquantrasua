@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lương nhân viên</title>
+    <title>Doanh thu</title>
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <link rel="icon" href="/assets/img/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="/assets/libs/fontawesome-free-5.15.4-web/css/all.min.css">
@@ -19,26 +19,33 @@
         <div class="width">
             <div class="luong_header">
                 <div class="content_left_box"></div>
-                <h1>LƯƠNG</h1>
+                <h1>DOANH THU</h1>
+                <select class="loaiDoanhThu" name="" id="">
+                    <option value="doanhThu">Doanh thu</option>
+                    <option value="tuan">Doanh thu: Tuần này</option>
+                    <option value="thang">Doanh thu: Tháng này</option>
+                    <option value="doanhThu">Doanh thu: Đầy đủ</option>
+                </select>
+            </div>
+
+            <div>
+                <h3 class="doanhThu"><i class="fas fa-wallet"></i> </h3>
             </div>
 
             <ul class="luong_content2">
                 <li>
                     <div style="border-bottom:none" class="luong_content_center">
                         <div class="luong_center_left">
-                            <p><b>Tên nhân viên</b></p>
+                            <p><b>Mã hóa đơn</b></p>
                         </div>
                         <div class="luong_center_between">
-                            <p><b>Tổng lương</b></p>
+                            <p><b>Ngày lập hóa đơn</b></p>
                         </div>
-                        <div class="luong_center_right">
-                            <p><b>Số ca</b></p>
+                        <div class="luong_center_between">
+                            <p><b>Tổng tiền</b></p>
                         </div>
-                        <div class="luong_center_right">
-                            <p><b>Số giờ</b></p>
-                        </div>
-                        <div class="luong_center_right">
-                            <p><b>Hệ số</b></p>
+                        <div class="luong_center_between">
+                            <p><b>Tổng sản phẩm</b></p>
                         </div>
                     </div>
                 </li>
@@ -49,23 +56,35 @@
 
             <div style="margin-top: 40px" class="luong_header">
                 <div class="content_left_box"></div>
-                <h1>LỊCH SỬ CA LÀM VIỆC</h1>
+                <h1>CHI TIẾT HÓA ĐƠN</h1>
             </div>
 
             <ul class="luong_content3">
                 <li>
                     <div style="border-bottom:none" class="luong_content_center">
-                        <div class="luong_center_left">
+                        <div class="luong_center_right">
+                            <p><b>MHD</b></p>
+                        </div>
+                        <div class="luong_center_between">
                             <p><b>Tên nhân viên</b></p>
                         </div>
                         <div class="luong_center_between">
-                            <p><b>Thời gian làm việc</b></p>
+                            <p><b>Tên khách hàng</b></p>
+                        </div>
+                        <div class="luong_center_between">
+                            <p><b>Tên sản phẩm</b></p>
                         </div>
                         <div class="luong_center_right">
-                            <p><b>Hệ số lương</b></p>
+                            <p><b>Số lượng</b></p>
                         </div>
                         <div class="luong_center_right">
-                            <p><b>Lương</b></p>
+                            <p><b>Ngày lập</b></p>
+                        </div>
+                        <div class="luong_center_right">
+                            <p><b>Giá SP</b></p>
+                        </div>
+                        <div class="luong_center_right">
+                            <p><b>Thành tiền</b></p>
                         </div>
                     </div>
                 </li>
@@ -77,6 +96,6 @@
     </div>
     <div id="footer"></div>
 </body>
-<script src="/nhanVien/luong/luong.js"></script>
+<script src="/banHang/doanhThu/doanhThu.js"></script>
 
 </html>

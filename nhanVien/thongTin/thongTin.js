@@ -3,24 +3,6 @@ $(function() {
     $("#footer").load("/footer/footer.html");
 });
 
-function getCookie(cname) {
-    var name = cname + "=";
-    var ca = document.cookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') c = c.substring(1);
-        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
-    }
-    return "";
-}
-
-function setCookie(cname, cvalue, exdays) {
-    const d = new Date();
-    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-    let expires = "expires=" + d.toUTCString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-}
-
 var url_user = 'http://localhost:3000/getNV';
 
 function tao_ma() {
@@ -36,9 +18,17 @@ function tao_ma() {
             if (data.status == 401) {
 
             } else {
-                data.map(function(nhanVien) {
-                    setCookie("max_ma", nhanVien.MANV, 365);
-                })
+                if (data == '') {
+                    localStorage.setItem('max_manv', 0);
+                    localStorage.setItem('max_mapq', 0);
+                    localStorage.setItem('max_mamk', 0);
+                } else {
+                    data.map(function(nhanVien) {
+                        localStorage.setItem('max_manv', nhanVien.MANV);
+                        localStorage.setItem('max_mapq', nhanVien.MAPQ);
+                        localStorage.setItem('max_mamk', nhanVien.MAMK);
+                    })
+                }
             }
 
         })
@@ -48,14 +38,16 @@ function tao_ma() {
 }
 tao_ma();
 
-function setCookie(cname, cvalue, exdays) {
-    const d = new Date();
-    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-    let expires = "expires=" + d.toUTCString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1);
+        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+    }
+    return "";
 }
-
-var url_user = 'http://localhost:3000/getNV';
 
 fetch(url_user, {
         method: 'GET',
@@ -77,17 +69,31 @@ fetch(url_user, {
             var thongTin_right = document.querySelector('.thongTin_right');
 
             try {
-                if (check_name.PHANQUYEN === true) {
+                if (check_name.TENPQ === true) {
                     thongTin_right.classList.add('display_none');
 
                     var htmls = data.map(function(nhanVien) {
+                        var day = new Date(nhanVien.NGAYVAOLAM);
+                        var get_day = (day.getDate())
+                        var get_month = (day.getMonth() + 1);
+                        if (get_day < 10) {
+                            get_day = '0' + get_day;
+                        }
+                        if (get_month < 10) {
+                            get_month = '0' + get_month;
+                        }
+                        var format_date = get_day + '-' + get_month + '-' + day.getFullYear();
+
                         return `<li class = "demo_code">
                                 <div class = "thongtin_content_header">
                                     <h3><i class="fas fa-user"></i> ${nhanVien.TENNV}</h3>
                                     <a
                                     onclick ="
                                             location.href = '/nhanVien/suaNhanVien/suaNhanVien.html'
-                                            setCookie('edit_ma', '${nhanVien.MANV}', 365)
+                                            localStorage.setItem('manv', '${nhanVien.MANV}');
+                                            localStorage.setItem('mapq', '${nhanVien.MAPQ}');
+                                            localStorage.setItem('mamk', '${nhanVien.MAMK}');
+                                            localStorage.setItem('ten_user', '${nhanVien.TENUSER}');       
                                             "class = "thongtin_content_edit"><h2><i class="fas fa-edit"></i> Chỉnh sửa</h2></a>
                                 </div>
                                 <h4> ${nhanVien.CHUCVU} </h4>
@@ -96,11 +102,12 @@ fetch(url_user, {
                                         <p>Mã nhân viên: ${nhanVien.MANV}</p>
                                         <p>Địa chỉ: ${nhanVien.DIACHI}</p>  
                                         <p>Số điện thoại: ${nhanVien.SDT}</p>
-                                        <p>Phân quyền: ${nhanVien.PHANQUYEN}</p>
+                                        <p>Phân quyền: ${nhanVien.TENPQ}</p>
                                     </div>
                                     <div class="thongtin_content_right">
                                         <p>Giới tính: ${nhanVien.GIOITINH}</p>
-                                        <p>Ngày vào làm: ${nhanVien.NGAYVAOLAM}</p>
+                                        <p>Ngày vào làm: ${format_date}</p>
+                                        <p>Tên đăng nhập: ${nhanVien.TENUSER}</p>
                                         <p>Mật khẩu: ${nhanVien.MATKHAU}</p>
                                         <button onclick ="
                                                             var deleteNV = 'http://localhost:3000/deleteNV';
@@ -129,6 +136,16 @@ fetch(url_user, {
                     })
 
                     var htmls = loc.map(function(nhanVien) {
+                        var day = new Date(nhanVien.NGAYVAOLAM);
+                        var get_day = (day.getDate())
+                        var get_month = (day.getMonth() + 1);
+                        if (get_day < 10) {
+                            get_day = '0' + get_day;
+                        }
+                        if (get_month < 10) {
+                            get_month = '0' + get_month;
+                        }
+                        var format_date = get_day + '-' + get_month + '-' + day.getFullYear();
                         return `<li class = "">
                                 <div class = "thongtin_content_header">
                                     <h3><i class="fas fa-user"></i> ${nhanVien.TENNV}</h3>
@@ -142,7 +159,7 @@ fetch(url_user, {
                                     </div>
                                     <div class="thongtin_content_right">
                                         <p>Giới tính: ${nhanVien.GIOITINH}</p>
-                                        <p>Ngày vào làm: ${nhanVien.NGAYVAOLAM}</p>
+                                        <p>Ngày vào làm: ${format_date}</p>
                                     </div>
                                 </div>
                                 
@@ -160,6 +177,3 @@ fetch(url_user, {
     .catch((error) => {
         alert(error)
     });
-
-console.log(document.cookie);
-document.cookie = "demo=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";

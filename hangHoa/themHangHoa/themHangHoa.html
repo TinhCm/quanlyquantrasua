@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thêm sản phẩm</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <link rel="icon" href="/assets/img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/libs/fontawesome-free-5.15.4-web/css/all.min.css">
+    <link rel="stylesheet" href="/assets/main.css">
+    <link rel="stylesheet" href="/assets/responsive.css">
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <div class="themNhanVien">
+        <div class="width">
+            <div class="themNhanVien_header">
+                <div class="content_left_box"></div>
+                <h1>THÊM HÀNG HÓA</h1>
+            </div>
+            <div class="themNhanVien_center">
+                <div class="themNhanVien_left">
+                    <h3 class="mahh"></h3>
+                    <h4 class="check_mahh"></h4>
+                    <input class="tenhh" type="text" placeholder="Nhập tên hàng hóa">
+                    <h4 class="check_tenhh"></h4>
+                    <input class="sl" type="text" placeholder="Nhập số lượng">
+                    <h4 class="check_sl"></h4>
+                    <input class="donvi" type="text" placeholder="Nhập đơn vị tính">
+                    <h4 class="check_donvi"></h4>
+                </div>
+                <div class="themNhanVien_right">
+                    <input class="giahh" type="text" placeholder="Nhập giá hàng hóa">
+                    <h4 class="check_giahh"></h4>
+                    <select class="mancc">
+                        <option value="Sáng">Ca: Sáng</option>
+                        <option value="Chiều">Ca: Chiều</option>
+                        <option value="Tối">Ca: Tối</option>
+                    </select>
+                    <h4 class="check_mancc"></h4>
+                    <input class="ngaynhap" type="date" placeholder="Ngày nhập">
+                    <h4 class="check_ngaynhap"></h4>
+                    <button class="themCa">Tạo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer"></div>
+</body>
+<script src="/hangHoa/themHangHoa/themHangHoa.js"></script>
+
+</html>

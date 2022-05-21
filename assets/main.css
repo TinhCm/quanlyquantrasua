@@ -859,6 +859,10 @@ h2 {
 
 /* Thông tin */
 
+.ca_right {
+    display: none;
+}
+
 .thongTin,
 .ca,
 .luong {
@@ -873,7 +877,8 @@ h2 {
     align-items: center;
 }
 
-.thongTin_header1 {
+.thongTin_header1,
+.ca_header1 {
     display: flex;
     justify-content: space-between;
 }
@@ -883,16 +888,22 @@ h2 {
     display: none;
 }
 
-.thongTin_right a {
+.thongTin_right a,
+.ca_right a,
+.khachHang_right a {
     text-decoration: none;
     color: black;
 }
 
-.thongTin_right h1 {
+.thongTin_right h1,
+.ca_right h1,
+.khachHang_right h1 {
     line-height: 10px;
 }
 
-.thongTin_right h1 i {
+.thongTin_right h1 i,
+.ca_right h1 i,
+.khachHang_right h1 i {
     padding-right: 10px;
     color: blue;
 }
@@ -916,7 +927,6 @@ h2 {
 }
 
 .thongtin_content h3,
-.ca_content h3,
 .luong h3 {
     font-size: 20px;
     color: blue;
@@ -948,8 +958,7 @@ h2 {
     border-bottom: 2px solid orangered;
 }
 
-.thongTin ul li:last-child,
-.ca ul li:last-child {
+.thongTin ul li:last-child {
     border-bottom: none;
     padding-top: 10px;
 }
@@ -1007,15 +1016,97 @@ h2 {
     color: var(--text-color);
 }
 
-.ca ul li {
-    padding-bottom: 10px;
+.ca ul li a {
+    text-decoration: none;
+    color: blue;
+}
+
+.ca_content_center {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+}
+
+.ca_content h3 {
+    font-size: 20px;
+    color: blue;
+}
+
+.thongTin_right,
+.ca_right {
+    margin-top: 20px;
+}
+
+.ca_center_left,
+.ca_center_between,
+.ca_center_right {
+    flex: 3;
+}
+
+.ca_center_right2,
+.ca_center_right3 {
+    flex: 1;
+    justify-content: right !important;
+}
+
+.ca_center_right a {
+    text-decoration: none;
+    color: var(--text-color) !important;
+    cursor: pointer;
+}
+
+.themCa {
+    height: 40px;
+    font-size: 18px;
+    color: white;
+    background-color: blue;
+    border: none;
+    border-radius: 5px;
+    width: 400px;
+    cursor: pointer;
+}
+
+.luuCa {
+    height: 40px;
+    font-size: 18px;
+    color: white;
+    background-color: blue;
+    border: none;
+    border-radius: 5px;
+    width: 400px;
+    cursor: pointer;
+}
+
+.themNhanVien_left h3,
+.themNhanVien_right h3 {
+    font-size: 18px;
+    height: 40px;
+    line-height: 40px;
+    margin: 0;
+    color: #e60808;
 }
 
 
 /* Lương */
 
-.luong ul li {
-    padding-bottom: 10px;
+.luong_content_center {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+}
+
+.luong_center_left i {
+    color: blue;
+    padding-right: 10px;
+}
+
+.luong_center_left,
+.luong_center_between {
+    flex: 2;
+}
+
+.luong_center_right {
+    flex: 1;
 }
 
 
@@ -1112,6 +1203,18 @@ h2 {
     padding: 0 10px;
 }
 
+.suaNhanVien_center select {
+    font-size: 18px;
+    display: block;
+    outline: none;
+    margin-bottom: 10px;
+    height: 40px;
+    width: 250px;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 0 10px;
+}
+
 .suaNV {
     height: 40px;
     font-size: 18px;
@@ -1128,4 +1231,289 @@ h2 {
     height: 40px;
     line-height: 40px;
     margin: 0;
+}
+
+
+/* Khách hàng */
+
+.khacHang_content_center {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+}
+
+.khachHang_right {
+    margin-top: 20px;
+}
+
+.khacHang_center_left {
+    flex: 3;
+}
+
+.khacHang_center_right1,
+.khacHang_center_right,
+.khacHang_center_between {
+    flex: 2;
+}
+
+.khacHang_center_right2 {
+    flex: 1;
+}
+
+.khacHang_center_right2 i {
+    color: blue;
+}
+
+.khacHang_center_left i {
+    color: blue;
+    padding-right: 10px;
+}
+
+.themKhachHang {
+    height: 40px;
+    font-size: 18px;
+    color: white;
+    background-color: blue;
+    border: none;
+    border-radius: 5px;
+    width: 400px;
+    cursor: pointer;
+}
+
+.khachHang_content li {
+    border-bottom: none !important;
+    padding-bottom: 0;
+}
+
+.khachHang_content li:last-child {
+    padding-top: 0 !important;
+}
+
+.suaKhachHang {
+    height: 40px;
+    font-size: 18px;
+    color: white;
+    background-color: blue;
+    border: none;
+    border-radius: 5px;
+    width: 400px;
+    cursor: pointer;
+}
+
+
+/* Doanh thu */
+
+.doanhThu i {
+    padding-right: 10px;
+}
+
+
+/* Bán hàng */
+
+.banHang {
+    min-height: 500px;
+}
+
+.banHang_center {
+    display: flex;
+    justify-content: space-between;
+}
+
+.banHang_center p,
+.banHang_center label {
+    font-size: 18px;
+}
+
+.banHang_left {
+    flex: 2.5;
+    border-right: dotted 2px rgb(236, 13, 13);
+}
+
+.banHang_top {
+    border-bottom: solid 2px black;
+}
+
+.banHang_top select {
+    font-size: 18px;
+    height: 30px;
+    width: 240px;
+}
+
+.banHang_right {
+    flex: 1;
+}
+
+.banHang_top {
+    min-height: 260px;
+}
+
+.banHang_top h1 {
+    text-align: center;
+    padding-top: 10px;
+    color: blue;
+}
+
+.banHang_buttom {
+    text-align: center;
+}
+
+.banHang_buttom h1 {
+    text-align: center;
+    padding-top: 10px;
+    color: blue;
+}
+
+.banHang_right h1 {
+    text-align: center;
+    padding-top: 10px;
+    color: blue;
+}
+
+.banHang_sl {
+    display: flex
+}
+
+.bangHang_click {
+    display: flex;
+    height: 30px;
+}
+
+.bangHang_click p {
+    display: inline-block;
+    font-size: 25px;
+    line-height: 10px;
+}
+
+.bangHang_click i {
+    line-height: 40px;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.luu_SP {
+    display: flex;
+}
+
+.luuSP {
+    height: 30px;
+    width: 70px;
+    color: white;
+    font-size: 18px;
+    margin: auto;
+    background-color: blue;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.banHang_header {
+    display: flex;
+}
+
+.banHang_header p {
+    text-align: left;
+}
+
+.banHang_header1 {
+    flex: 2;
+}
+
+.banHang_header2 {
+    flex: 1;
+}
+
+.banHang_header3 {
+    flex: 1;
+}
+
+.banHang_header4 {
+    flex: 1;
+}
+
+.banHang_right {
+    padding-left: 20px;
+}
+
+.banHang_right h2 {
+    text-align: left;
+    font-size: 18px;
+}
+
+.banHang_right h2 i {
+    padding-right: 10px;
+    color: blue;
+}
+
+.hoadon {
+    padding-top: 20px;
+}
+
+.sanPhamDaChon {
+    list-style: none;
+    padding-left: 0;
+}
+
+.banHangTop_header {
+    display: flex;
+    justify-content: space-around;
+}
+
+.banHangTop_header button {
+    height: 30px;
+    margin-top: 23px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background-color: #e60808;
+    color: white;
+}
+
+.banHang_right label {
+    color: red;
+}
+
+.mahdbh {
+    color: #e60808;
+    font-size: 18px;
+    display: inline-block;
+    width: 100px;
+    outline: none;
+    border: none;
+    margin-left: 10px;
+    border-radius: 5px;
+}
+
+.thanhToan {
+    display: flex;
+}
+
+.thanhToanHD {
+    margin-bottom: 20px !important;
+    margin: auto;
+    outline: none;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    background-color: blue;
+    height: 30px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.banHangTop_center {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 20px;
+}
+
+
+/* Doanh thu */
+
+.loaiDoanhThu {
+    font-size: 18px;
+    margin-left: 20px;
+    outline: none;
+    border-radius: 5px;
 }

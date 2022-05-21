@@ -34,7 +34,7 @@ login_sent.onclick = function() {
             .then((response) => response.json())
             .then((data) => {
                 var check_name = data.find(function(users) {
-                    return users.MANV === login_name.value;
+                    return users.TENUSER === login_name.value;
                 })
 
                 if (typeof check_name != 'undefined') {

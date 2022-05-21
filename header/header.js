@@ -24,10 +24,11 @@ if (getCookie('ma') != "") {
 logout.onclick = function() {
     var check_login = confirm("Bạn muốn đăng xuất")
     if (check_login === true) {
+        location.href = '/index.html'
         document.cookie = "ten=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         document.cookie = "ma=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-        document.cookie = "max_ma=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     }
+    return false;
 }
 
 function getCookie(cname) {
