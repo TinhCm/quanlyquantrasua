@@ -340,14 +340,10 @@ function suaHoaDonBH() {
                     return hoaDon.MAHDBH == localStorage.getItem('mahdbh');
                 })
 
-                console.log(loc)
-
                 var dataPost = {
                     MAHDBH: localStorage.getItem('mahdbh'),
                     TONGTIEN: Number(loc.TONGTIEN),
                 };
-
-                console.log("Nội dung gửi: " + loc.TONGTIEN + typeof loc.TONGTIEN)
 
                 var url_putHDBH = 'http://localhost:3000/putHDBH';
                 fetch(url_putHDBH, {

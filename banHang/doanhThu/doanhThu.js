@@ -11,32 +11,55 @@ var loaiDoanhThu = document.querySelector('.loaiDoanhThu');
 loaiDoanhThu.onchange = function() {
 
     if (loaiDoanhThu.value == 'doanhThu') {
-        localStorage.setItem('hoaDon', 'http://localhost:3000/getHoaDon');
-        localStorage.setItem('hoaDon2', 'http://localhost:3000/getHoaDon2');
-        localStorage.setItem('doanhThu', 'http://localhost:3000/getDoanhThu');
+        localStorage.setItem('hoaDon', 'getHoaDon');
+        localStorage.setItem('hoaDon2', 'getHoaDon2');
+        localStorage.setItem('doanhThu', 'getDoanhThu');
         setTimeout(() => {
             location.reload()
         }, 1);
     } else if (loaiDoanhThu.value == 'thang') {
-        localStorage.setItem('hoaDon', 'http://localhost:3000/getHoaDonThang');
-        localStorage.setItem('hoaDon2', 'http://localhost:3000/getHoaDon2Thang');
-        localStorage.setItem('doanhThu', 'http://localhost:3000/getDoanhThuThang');
+        localStorage.setItem('hoaDon', 'getHoaDonThang');
+        localStorage.setItem('hoaDon2', 'getHoaDon2Thang');
+        localStorage.setItem('doanhThu', 'getDoanhThuThang');
         setTimeout(() => {
             location.reload()
         }, 1);
     } else if (loaiDoanhThu.value == 'tuan') {
-        localStorage.setItem('hoaDon', 'http://localhost:3000/getHoaDonTuan');
-        localStorage.setItem('hoaDon2', 'http://localhost:3000/getHoaDon2Tuan');
-        localStorage.setItem('doanhThu', 'http://localhost:3000/getDoanhThuTuan');
+        localStorage.setItem('hoaDon', 'getHoaDonTuan');
+        localStorage.setItem('hoaDon2', 'getHoaDon2Tuan');
+        localStorage.setItem('doanhThu', 'getDoanhThuTuan');
         setTimeout(() => {
             location.reload()
         }, 1);
     }
 }
 
-var url_hoaDon = localStorage.getItem('hoaDon');
-var url_getHD2 = localStorage.getItem('hoaDon2');
-var url_getDT = localStorage.getItem('doanhThu');
+var url_hoaDon = 'http://localhost:3000/' + localStorage.getItem('hoaDon');
+var url_getHD2 = 'http://localhost:3000/' + localStorage.getItem('hoaDon2');
+var url_getDT = 'http://localhost:3000/' + localStorage.getItem('doanhThu');
+
+if (localStorage.getItem('hoaDon') === 'getHoaDon') {
+    loaiDoanhThu.innerHTML = `
+    
+    <option value="tuan">Doanh thu: Tuần này</option>
+    <option value="thang">Doanh thu: Tháng này</option>
+    <option selected="selected" value="doanhThu">Doanh thu: Đầy đủ</option>
+    `
+} else if (localStorage.getItem('hoaDon') === 'getHoaDonThang') {
+    loaiDoanhThu.innerHTML = `
+    
+    <option value="tuan">Doanh thu: Tuần này</option>
+    <option selected="selected" value="thang">Doanh thu: Tháng này</option>
+    <option value="doanhThu">Doanh thu: Đầy đủ</option>
+    `
+} else if (localStorage.getItem('hoaDon') === 'getHoaDonTuan') {
+    loaiDoanhThu.innerHTML = `
+    
+    <option selected="selected" value="tuan">Doanh thu: Tuần này</option>
+    <option value="thang">Doanh thu: Tháng này</option>
+    <option value="doanhThu">Doanh thu: Đầy đủ</option>
+    `
+}
 
 function hoaDon() {
     fetch(url_user, {
