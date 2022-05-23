@@ -103,7 +103,7 @@ function hoaDon() {
                                 if (check_name.TENPQ === true) {
                                     var htmls = data1.map(function(loc) {
                                         return `
-                                    <i class="fas fa-wallet"></i> Tổng doanh thu: ${loc.TONGTIEN}
+                                    <i class="fas fa-wallet"></i> Tổng doanh thu: ${loc.TONGTIEN} VND
                                                 `
                                     })
                                     document.querySelector('.doanhThu').innerHTML = htmls.join('');
