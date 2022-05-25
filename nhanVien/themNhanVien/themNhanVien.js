@@ -105,6 +105,8 @@ function themNhanVien() {
                         check_tenuser.innerHTML = ''
                         if (sdt.value === '') {
                             check_sdt.innerHTML = 'Vui lòng nhập số điện thọai'
+                        } else if (sdt.value.length > 11) {
+                            check_sdt.innerHTML = 'Vui lòng nhập số điện thọai hợp lệ'
                         } else if (date.value === '') {
                             check_sdt.innerHTML = ''
                             check_date.innerHTML = 'Vui lòng nhập ngày vào làm'

@@ -75,11 +75,14 @@ function suaKH() {
     suaKhachHang.onclick = function() {
         if (tenkh.value === '') {
             check_tenkh.innerHTML = 'Vui lòng nhập tên khách hàng'
-        } else if (dateBD.value === '') {
+        } else if (sdt.value.length > 11) {
             check_tenkh.innerHTML = '';
+            check_sdt.innerHTML = 'Vui lòng nhập số điện thoại hợp lệ'
+        } else if (dateBD.value === '') {
+            check_sdt.innerHTML = '';
             check_dateBD.innerHTML = 'Vui lòng nhập ngày đăng ký'
         } else {
-            check_dateBD.innerHTML = '';
+            check_sdt.innerHTML = '';
             var dataPost = {
                 MAKH: localStorage.getItem('makh'),
                 MALKH: loaikh.value,
@@ -107,8 +110,6 @@ function suaKH() {
                     alert(error)
                 });
         }
-
-
     }
 }
 suaKH();

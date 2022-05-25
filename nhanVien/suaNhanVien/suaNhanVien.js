@@ -159,6 +159,8 @@ function suaNhanVien() {
                         check_matkhau.innerHTML = ''
                         if (sdt.value === '') {
                             check_sdt.innerHTML = 'Vui lòng nhập số điện thọai'
+                        } else if (sdt.value.length > 11) {
+                            check_sdt.innerHTML = 'Vui lòng nhập số điện thọai hợp lệ'
                         } else {
                             check_sdt.innerHTML = '';
                             check_phanquyen.innerHTML = '';

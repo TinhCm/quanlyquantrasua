@@ -108,35 +108,38 @@ function suaNCC() {
         } else if (sdt.value === '') {
             check_diachi.innerHTML = '';
             check_sdt.innerHTML = 'Vui lòng nhập số điện thoại';
+        } else if (sdt.value.length > 11) {
+            check_diachi.innerHTML = '';
+            check_sdt.innerHTML = 'Vui lòng nhập số điện thoại hợp lệ';
         } else {
-            check_sdt.innerHTML = ''
+            check_sdt.innerHTML = '';
+            var dataPost = {
+                MANCC: localStorage.getItem('mancc'),
+                TEN: tenncc.value,
+                DIACHI: diachi.value,
+                SDT: sdt.value
+            };
+
+            var url_putNCC = 'http://localhost:3000/putNCC';
+            fetch(url_putNCC, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(dataPost),
+                })
+                .then((response) => response.json())
+                .then((data) => {
+                    alert("Lưu thành công")
+                    setTimeout(() => {
+                        location.reload();
+                    }, 1000);
+                })
+                .catch((error) => {
+                    alert(error)
+                });
         }
 
-        var dataPost = {
-            MANCC: localStorage.getItem('mancc'),
-            TEN: tenncc.value,
-            DIACHI: diachi.value,
-            SDT: sdt.value
-        };
-
-        var url_putNCC = 'http://localhost:3000/putNCC';
-        fetch(url_putNCC, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(dataPost),
-            })
-            .then((response) => response.json())
-            .then((data) => {
-                alert("Tạo thành công")
-                setTimeout(() => {
-                    location.reload();
-                }, 1000);
-            })
-            .catch((error) => {
-                alert(error)
-            });
     }
 
 }
