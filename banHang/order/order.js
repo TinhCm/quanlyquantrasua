@@ -47,6 +47,9 @@ var soluong = 1;
 
 giamSL.onclick = function() {
     SL.innerHTML = Number(SL.innerHTML) - 1;
+    if (Number(SL.innerHTML) <= 1) {
+        SL.innerHTML = 1;
+    }
 }
 
 tangSL.onclick = function() {
