@@ -3,6 +3,17 @@ $(function() {
     $("#footer").load("/footer/footer.html");
 });
 
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1);
+        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+    }
+    return "";
+}
+
 var makh = document.querySelector('.makh');
 var tenkh = document.querySelector('.tenkh');
 var loaikh = document.querySelector('.loaikh');
@@ -69,7 +80,6 @@ function getItem() {
             alert(error)
         });
 }
-getItem();
 
 function suaKH() {
     suaKhachHang.onclick = function() {
@@ -112,4 +122,38 @@ function suaKH() {
         }
     }
 }
-suaKH();
+
+var url_user = 'http://localhost:3000/getNV';
+
+function check() {
+    fetch(url_user, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        .then((response) => response.json())
+        .then((data) => {
+
+            if (data.status == 401) {
+
+            } else {
+                var check_name = data.find(function(users) {
+                    return users.MANV === getCookie('ma');
+                })
+
+                console.log(check_name);
+                if (check_name === undefined) {
+
+                } else {
+                    getItem();
+                    suaKH();
+                }
+            }
+
+        })
+        .catch((error) => {
+            alert(error)
+        });
+}
+check();

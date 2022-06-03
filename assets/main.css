@@ -1508,6 +1508,11 @@ h2 {
     padding-right: 20px;
 }
 
+.banHang_header4 i {
+    cursor: pointer;
+    color: red;
+}
+
 
 /* Doanh thu */
 

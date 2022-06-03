@@ -12,13 +12,41 @@ function getCookie(cname) {
     return "";
 }
 
-if (getCookie('ma') != "") {
-    login.classList.add('display');
-    logout.classList.add('display_none')
-} else {
-    login.classList.remove('display');
-    logout.classList.remove('display_none')
+var url_user = 'http://localhost:3000/getNV';
+
+function check() {
+    fetch(url_user, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        .then((response) => response.json())
+        .then((data) => {
+
+            if (data.status == 401) {
+
+            } else {
+                var check_name = data.find(function(users) {
+                    return users.MANV === getCookie('ma');
+                })
+
+                console.log(check_name);
+                if (check_name === undefined) {
+                    login.classList.remove('display');
+                    logout.classList.remove('display_none')
+                } else {
+                    login.classList.add('display');
+                    logout.classList.add('display_none')
+                }
+            }
+
+        })
+        .catch((error) => {
+            alert(error)
+        });
 }
+check();
 
 //Logout
 logout.onclick = function() {

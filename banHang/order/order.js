@@ -218,10 +218,12 @@ function getSPCHON() {
                                                 },
                                                 body: JSON.stringify(dataPost),
                                             })
-                                            
-                                            getSPCHON();
-                                            xuatHD();
-            
+                                            setTimeout(() => {
+                                                getSPCHON();
+                                            }, 1);
+                                            setTimeout(() => {
+                                                xuatHD();
+                                            }, 2);
                                     ")"
                                     ><a><i class="fas fa-trash-alt"></i></a></p>
                                 </div>
@@ -238,7 +240,7 @@ function getSPCHON() {
 }
 
 
-function taoCTBH() {
+async function taoCTBH() {
     luuSP.onclick = function() {
         taoHoaDonBH();
         taoCTBH()
@@ -280,13 +282,21 @@ function taoCTBH() {
                         })
                         .then((response) => response.json())
                         .then((data) => {
-                            suaHoaDonBH();
+                            setTimeout(() => {
+                                suaHoaDonBH();
+                            }, 1);
                         })
                         .catch((error) => {
                             alert(error)
                         });
-                    getSPCHON();
-                    xuatHD();
+                    setTimeout(() => {
+                        getSPCHON();
+                    }, 2);
+
+                    setTimeout(() => {
+                        xuatHD();
+                    }, 3);
+
                 }
 
             })

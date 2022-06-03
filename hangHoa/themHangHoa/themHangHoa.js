@@ -45,7 +45,6 @@ function tao_ma() {
             alert(error)
         });
 }
-tao_ma();
 
 function tao_maHDNH() {
     fetch(url_getFullHDNH, {
@@ -74,7 +73,6 @@ function tao_maHDNH() {
             alert(error)
         });
 }
-tao_maHDNH();
 
 function getItem() {
     var url_getNCC = 'http://localhost:3000/getNCC';
@@ -105,8 +103,6 @@ function getItem() {
         })
 
 }
-
-getItem();
 
 var mahh = document.querySelector('.mahh')
 var tenhh = document.querySelector('.tenhh')
@@ -186,4 +182,40 @@ function themSP() {
     }
 
 }
-themSP();
+
+var url_user = 'http://localhost:3000/getNV';
+
+function check() {
+    fetch(url_user, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        .then((response) => response.json())
+        .then((data) => {
+
+            if (data.status == 401) {
+
+            } else {
+                var check_name = data.find(function(users) {
+                    return users.MANV === getCookie('ma');
+                })
+
+                console.log(check_name);
+                if (check_name === undefined) {
+
+                } else {
+                    tao_ma();
+                    tao_maHDNH();
+                    getItem();
+                    themSP();
+                }
+            }
+
+        })
+        .catch((error) => {
+            alert(error)
+        });
+}
+check();

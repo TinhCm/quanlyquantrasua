@@ -3,6 +3,17 @@ $(function() {
     $("#footer").load("/footer/footer.html");
 });
 
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1);
+        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+    }
+    return "";
+}
+
 var url_getSP = 'http://localhost:3000/getHangHoa';
 var url_getFullSP = 'http://localhost:3000/getFullSP';
 var url_getFullHDNH = 'http://localhost:3000/getFullHDNH';
@@ -65,33 +76,34 @@ function tao_maHDNH() {
 }
 tao_maHDNH();
 
-fetch(url_getSP, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-    })
-    .then((response) => response.json())
-    .then((data) => {
+function hangHoa() {
+    fetch(url_getSP, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        .then((response) => response.json())
+        .then((data) => {
 
-        if (data.status == 401) {
+            if (data.status == 401) {
 
-        } else {
+            } else {
 
-            try {
-                var htmls = data.map(function(hangHoa) {
-                    var day = new Date(hangHoa.NGAYHDNH);
-                    var get_day = (day.getUTCDate())
-                    var get_month = (day.getUTCMonth() + 1);
-                    if (get_day < 10) {
-                        get_day = '0' + get_day;
-                    }
-                    if (get_month < 10) {
-                        get_month = '0' + get_month;
-                    }
-                    var format_date = get_day + '-' + get_month + '-' + day.getFullYear();
+                try {
+                    var htmls = data.map(function(hangHoa) {
+                        var day = new Date(hangHoa.NGAYHDNH);
+                        var get_day = (day.getUTCDate())
+                        var get_month = (day.getUTCMonth() + 1);
+                        if (get_day < 10) {
+                            get_day = '0' + get_day;
+                        }
+                        if (get_month < 10) {
+                            get_month = '0' + get_month;
+                        }
+                        var format_date = get_day + '-' + get_month + '-' + day.getFullYear();
 
-                    return `<li>
+                        return `<li>
                     <div class="ca_content_center">
                         <div style="flex: 2;" class="ca_center_left">
                             <p><i style = "color: blue; padding-right: 10px" class="fas fa-utensils"></i>${hangHoa.TENHH}</p>
@@ -142,15 +154,52 @@ fetch(url_getSP, {
                         
                     </div>
                 </li>`
-                })
-                document.querySelector('.ca_content').innerHTML = htmls.join('');
-            } catch (error) {
+                    })
+                    document.querySelector('.ca_content').innerHTML = htmls.join('');
+                } catch (error) {
+
+                }
 
             }
 
-        }
+        })
+        .catch((error) => {
+            alert(error)
+        });
+}
 
-    })
-    .catch((error) => {
-        alert(error)
-    });
+var url_user = 'http://localhost:3000/getNV';
+
+function check() {
+    fetch(url_user, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        .then((response) => response.json())
+        .then((data) => {
+
+            if (data.status == 401) {
+
+            } else {
+                var check_name = data.find(function(users) {
+                    return users.MANV === getCookie('ma');
+                })
+
+                console.log(check_name);
+                if (check_name === undefined) {
+
+                } else {
+                    hangHoa();
+                    var ca_right = document.querySelector('.ca_right');
+                    ca_right.classList.add('display_none');
+                }
+            }
+
+        })
+        .catch((error) => {
+            alert(error)
+        });
+}
+check();

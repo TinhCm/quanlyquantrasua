@@ -14,7 +14,6 @@ function getCookie(cname) {
     return "";
 }
 
-
 var mahh = document.querySelector('.mahh')
 var tenhh = document.querySelector('.tenhh')
 var giahh = document.querySelector('.giahh')
@@ -79,8 +78,6 @@ function get_ma() {
 
 }
 
-get_ma();
-
 function getItem() {
     var url_getNCC = 'http://localhost:3000/getNCC';
     fetch(url_getNCC, {
@@ -115,8 +112,6 @@ function getItem() {
         })
 
 }
-
-getItem();
 
 function suaHH() {
 
@@ -174,4 +169,39 @@ function suaHH() {
     }
 
 }
-suaHH();
+
+var url_user = 'http://localhost:3000/getNV';
+
+function check() {
+    fetch(url_user, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        .then((response) => response.json())
+        .then((data) => {
+
+            if (data.status == 401) {
+
+            } else {
+                var check_name = data.find(function(users) {
+                    return users.MANV === getCookie('ma');
+                })
+
+                console.log(check_name);
+                if (check_name === undefined) {
+
+                } else {
+                    get_ma();
+                    getItem();
+                    suaHH();
+                }
+            }
+
+        })
+        .catch((error) => {
+            alert(error)
+        });
+}
+check();
