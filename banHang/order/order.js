@@ -120,8 +120,6 @@ function getListSP() {
             alert(error)
         });
 }
-getListSP();
-
 
 function getListKH() {
     var url_listKH = 'http://localhost:3000/getKhachHang';
@@ -151,8 +149,6 @@ function getListKH() {
             alert(error)
         });
 }
-getListKH();
-
 
 function getSPCHON() {
     var url_listSPCHON = 'http://localhost:3000/getHoaDon';
@@ -239,8 +235,7 @@ function getSPCHON() {
         });
 }
 
-
-async function taoCTBH() {
+function taoCTBH() {
     luuSP.onclick = function() {
         taoHoaDonBH();
         taoCTBH()
@@ -306,7 +301,6 @@ async function taoCTBH() {
 
     }
 }
-taoCTBH();
 
 function taoHoaDonBH() {
 
@@ -432,3 +426,39 @@ thanhToanHD.onclick = function() {
     location.reload()
     suaHoaDonBH()
 }
+
+var url_user = 'http://localhost:3000/getNV';
+
+function check() {
+    fetch(url_user, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        .then((response) => response.json())
+        .then((data) => {
+
+            if (data.status == 401) {
+
+            } else {
+                var check_name = data.find(function(users) {
+                    return users.MANV === getCookie('ma');
+                })
+
+                console.log(check_name);
+                if (check_name === undefined) {
+
+                } else {
+                    taoCTBH();
+                    getListKH();
+                    getListSP();
+                }
+            }
+
+        })
+        .catch((error) => {
+            alert(error)
+        });
+}
+check();
