@@ -166,7 +166,8 @@ fetch(url_user, {
                                 })
                                 document.querySelector('.ca_content').innerHTML = htmls.join('');
                             } else {
-                                var htmls = data1.map(function(ca) {
+
+                                var htmls = data1.reverse().map(function(ca) {
                                     var d = new Date(ca.GIOBD);
                                     var layThu;
                                     switch (d.getUTCDay()) {
